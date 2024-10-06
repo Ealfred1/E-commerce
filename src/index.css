@@ -60,3 +60,7 @@
     opacity: 1;
     transform: translateX(0);
   }
+
+  .top-dot {
+    @apply bg-black w-5 h-5 absolute rounded-full flex items-center justify-center text-[12px] -top-2 right-0;
+  }

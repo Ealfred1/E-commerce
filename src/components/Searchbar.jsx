@@ -13,15 +13,17 @@ const Searchbar = () => {
 			</div>
 
 			<div className="text-white text-2xl flex gap-5">
-				<button className="hover:scale-[1.2] transition-all duration-200 flex items-center flex-col"><p><i className="pi pi-heart"></i></p>
+				<button className="hover:scale-[1.2] transition-all duration-200 flex items-center flex-col relative"><p><i className="pi pi-heart"></i></p>
 					<p className="text-[11px] -mt-3">
 						Wish List
 					</p>
+					<span className="top-dot">6</span>
 				</button>
-				<button className="hover:scale-[1.2] transition-all duration-200 flex items-center flex-col"><p><i className="pi pi-cart-plus"></i></p>
+				<button className="hover:scale-[1.2] transition-all duration-200 flex items-center flex-col relative"><p><i className="pi pi-cart-plus"></i></p>
 					<p className="text-[11px] -mt-3">
 						 Cart
 					</p>
+					<span className="top-dot translate-x-2">8</span>
 				</button>
 				<button className="hover:scale-[1.2] transition-all duration-200 flex items-center flex-col"><p><i className="pi pi-user"></i></p>
 					<p className="text-[11px] -mt-3">
