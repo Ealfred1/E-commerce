@@ -1,10 +1,18 @@
 import { useState } from 'react'
+import { Routes, Route } from 'react-router-dom';
 
 const App = () => {
 
   return (
     <>
-      <h1 className="">Rafcart</h1>
+      <main className="">
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route path="/register" element={<HomePage />} />
+            <Route path='/*' element={<NotFound />} />
+          </Route>
+        </Routes>
+      </main>
     </>
   )
 }
