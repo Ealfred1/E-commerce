@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { MobileNav } from './'
+import { MobileNav, Searchbar } from './'
 
 const Navbar = () => {
 	const [openMenu, setOpenMenu] = useState(false)
@@ -33,6 +33,7 @@ const Navbar = () => {
 					<button className="menu-btn" onClick={toggleMenu}><span className={`pi ${openMenu ? 'pi-times' : 'pi-bars'} text-[1rem]`}></span></button>
 				</div>
 			</nav>
+			<Searchbar />
 		</>
 	)
 }
