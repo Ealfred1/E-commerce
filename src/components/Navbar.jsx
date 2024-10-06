@@ -34,6 +34,11 @@ const Navbar = () => {
 				</div>
 			</nav>
 			<Searchbar />
+			<div className="flex items-center">
+				<i className="pi pi-home text-primary"></i>
+				<i className="pi pi-chevron-right text-xs"></i>
+				<span className="">Shop</span>
+			</div>
 		</>
 	)
 }
