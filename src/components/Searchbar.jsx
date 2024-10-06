@@ -7,9 +7,9 @@ const Searchbar = () => {
 			<button className="bg-black text-secondary rounded-lg h-12 w-[15%] py-1"><i className="pi pi-bars"></i> All categories</button>
 
 			<div className="w-[50%] border border-grayDark h-12 rounded-lg flex">
-				<button className="w-[25%] bg-white border-r  border-r-grayDark text-sm">All Category <i className="pi pi-chevron-down"></i></button>
-				<input type="text" id="" className="w-[55%] border-l border-l-grayDark px-4 text-sm" placeholder="Search products..." />
-				<button className="bg-black text-secondary rounded-r-lg w-[20%] text-sm">Search</button>
+				<button className="w-[25%] bg-white border-r  border-r-grayDark text-sm flex items-center justify-center gap-3">All Category <i className="pi pi-chevron-down"></i></button>
+				<input type="text" id="" className="w-[55%] border-l border-l-grayDark px-4 text-sm outline-none" placeholder="Search products..." />
+				<button className="bg-black text-secondary rounded-r-lg outline-none w-[20%] text-sm">Search</button>
 			</div>
 
 			<div className="text-white text-2xl flex gap-5">
