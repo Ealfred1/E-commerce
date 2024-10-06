@@ -23,18 +23,17 @@
   animation-delay: calc(var(--i) * 0.1s);
   opacity: 0;
 }
-
-body {
-    @apply bg-[#060417] text-white w-full overflow-x-hidden;
+  body {
+    @apply bg-white text-grayDark w-full overflow-x-hidden;
   }
 
   .navlink {
-    @apply text-[0.9rem] text-white relative cursor-pointer; 
+    @apply text-[0.9rem] text-black relative cursor-pointer; 
   }
 
   .navlink::before {
     content: '';
-    @apply w-[2rem] h-[0.2rem] bg-gradient-to-r from-[#a993fe] to-[#7e61e7] rounded-lg absolute bottom-[-0.6rem] opacity-0 translate-x-[-1.5rem] transition duration-300;
+    @apply w-[2rem] h-[0.2rem] bg-primary rounded-lg absolute bottom-[-0.6rem] opacity-0 translate-x-[-1.5rem] transition duration-300;
   }
 
   .navlink:hover::before {
@@ -42,8 +41,7 @@ body {
   }
 
   .menu-btn {
-    @apply w-[2.5rem] h-[2.5rem] text-[1.2rem] flex items-center justify-center border-none rounded-lg text-white cursor-pointer lg:hidden hover:text-[#a993fe] hover:bg-black hover:border hover:border-[#a993fe];
-    background: linear-gradient(90deg, #a993fe -0.13%,  #7e61e7 99.87%);
+    @apply w-[2.5rem] h-[2.5rem] text-[1.2rem] flex items-center justify-center border-none rounded-lg text-white cursor-pointer lg:hidden hover:text-primary hover:bg-black hover:border hover:border-primary bg-primary;
   }
 
   .menu-btn:hover {
