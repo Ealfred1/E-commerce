@@ -19,7 +19,7 @@ const Searchbar = () => {
 					</p>
 					<span className="top-dot">6</span>
 				</button>
-				<button className="hover:scale-[1.2] transition-all duration-200 flex items-center flex-col relative"><p><i className="pi pi-cart-plus"></i></p>
+				<button className="hover:scale-[1.2] transition-all duration-200 flex items-center flex-col relative"><p><i className="pi pi-cart-plus"></i></p> 
 					<p className="text-[11px] -mt-3">
 						 Cart
 					</p>
