@@ -24,7 +24,7 @@ const Loader = ({ text }) => (
 
       <div className="dots relative">
         {[...Array(15)].map((_, i) => (
-          <span key={i} style={{ '--i': i + 1 }} className="absolute h-2 w-2 bg-white rounded-full" />
+          <span key={i} style={{ '--i': i + 1 }} />
         ))}
 
       </div>
