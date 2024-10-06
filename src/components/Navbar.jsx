@@ -34,10 +34,12 @@ const Navbar = () => {
 				</div>
 			</nav>
 			<Searchbar />
-			<div className="flex items-center">
-				<i className="pi pi-home text-primary"></i>
-				<i className="pi pi-chevron-right text-xs"></i>
-				<span className="">Shop</span>
+			<div className="w-full flex items-start px-[4rem] py-2">
+				<div className="flex gap-3 items-center">
+					<i className="pi pi-home text-primary"></i>
+					<i className="pi pi-chevron-right text-xs"></i>
+					<span className="text-sm">Shop</span>
+				</div>
 			</div>
 		</>
 	)
