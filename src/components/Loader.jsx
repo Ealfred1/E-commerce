@@ -11,7 +11,7 @@ const loaderVariants = {
 
 const Loader = ({ text }) => (
   <motion.div
-    className="fixed inset-0 flex items-center justify-center z-50 flex-col bg-[rgba(0,0,0,0.3)] backdrop-blur-2xl"
+    className="fixed inset-0 flex items-center justify-center z-50 flex-col bg-secondary backdrop-blur-2xl"
     variants={loaderVariants}
     initial="hidden"
     animate="visible"
@@ -24,7 +24,7 @@ const Loader = ({ text }) => (
 
       <div className="dots relative">
         {[...Array(15)].map((_, i) => (
-          <span key={i} style={{ '--i': i + 1 }} className="absolute h-20 w-20 bg-white rounded-full" />
+          <span key={i} style={{ '--i': i + 1 }} className="absolute h-2 w-2 bg-white rounded-full" />
         ))}
 
       </div>
