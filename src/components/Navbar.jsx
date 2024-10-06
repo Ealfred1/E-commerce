@@ -12,7 +12,7 @@ const Navbar = () => {
 		<>
 			<MobileNav isOpen={openMenu} toggleMenu={toggleMenu} />
 			<nav className="bg-transparent py-2 sticky top-0 z-[30] backdrop-blur-3xl">
-				<div className="flex items-center justify-between py-4 mx-auto px-[1.8rem] md:px-[2rem]">
+				<div className="flex items-center justify-between py-2 mx-auto px-[1.8rem] md:px-[2rem]">
 					<div className="text-white text-2xl font-semibold">
 						<h1 className="text-primary">RAF<span className="text-grayDark">CART</span></h1>
 					</div>
