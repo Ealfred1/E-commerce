@@ -34,14 +34,16 @@ const ProductSection = () => {
     <div className="w-full lg:w-3/4 p-4">
       {/* Sort and View Options */}
       <div className="flex justify-between mb-4">
-        <select
-          value={sortOption}
-          onChange={handleSortChange}
-          className="border p-2"
-        >
-          <option value="default">Default sorting</option>
-          <option value="price">Sort by price</option>
-        </select>
+        <div className="border p-2 bg-transparent">
+          <select
+            value={sortOption}
+            onChange={handleSortChange}
+            className="border-none cursor-pointer outline-none bg-transparent"
+            >
+            <option value="default">Default sorting</option>
+            <option value="price">Sort by price</option>
+          </select>
+        </div>
         <div>
           <button
             onClick={() => setView('grid')}
