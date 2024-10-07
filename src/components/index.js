@@ -4,6 +4,7 @@ import Navbar from './Navbar'
 import MobileNav from './MobileNav'
 import Loader from './Loader'
 import Searchbar from './Searchbar'
+import FilterSection from './FilterSection'
 
 export {
 	Layout,
@@ -11,5 +12,6 @@ export {
 	Navbar,
 	Loader,
 	MobileNav,
-	Searchbar
+	Searchbar,
+	FilterSection
 }
