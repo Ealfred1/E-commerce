@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useFilter } from '../context/FilterContext';
 
 const ProductSection = ({ filters }) => {
+  const { filters: contextFilters } = useFilter();
   const [products, setProducts] = useState([]);
   const [view, setView] = useState('grid');
   const [sortOption, setSortOption] = useState('default');
@@ -34,7 +36,10 @@ const ProductSection = ({ filters }) => {
     // Filter by price range
     const priceMatch = product.price >= filters.priceRange[0] && product.price <= filters.priceRange[1];
 
-    return categoryMatch && priceMatch;
+     const searchQueryMatch = product.title.toLowerCase().includes(contextFilters.searchQuery.toLowerCase());
+
+
+    return categoryMatch && priceMatch && searchQueryMatch;
   });
 
 
