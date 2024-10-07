@@ -20,7 +20,7 @@ const Layout = () => {
   return (
     <div>
       <Navbar />
-      <section className="mt-48">
+      <section className="mt-2">
         <Outlet />
       </section>
     </div>
