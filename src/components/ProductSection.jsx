@@ -112,7 +112,7 @@ const ProductSection = () => {
                 />
                 <div>
                   <h3 className="font-bold">{product.title}</h3>
-                  <p className="text-red-500">${product.price} <span className="line-through">$55.45</span></p>
+                  <p className="text-red-500">${product.price} <span className="line-through ml-4 text-grayDark">$55.45</span></p>
                   {/* Display Rating */}
                   <div className="flex items-center">
                     {renderStars(product.rating.rate)}
