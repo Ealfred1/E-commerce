@@ -1,23 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const ProductSection = () => {
+const ProductSection = ({ filters }) => {
   const [products, setProducts] = useState([]);
   const [view, setView] = useState('grid');
-  const [sortOption, setSortOption] = useState('default');
 
   useEffect(() => {
     fetchProducts();
-  }, [sortOption]);
+  }, []);
 
   const fetchProducts = () => {
-    let endpoint = 'https://fakestoreapi.com/products';
-
-    if (sortOption === 'descending') {
-      endpoint = 'https://fakestoreapi.com/products?sort=desc'; // Sorting by price
-    }
-
-    axios.get(endpoint)
+    axios.get('https://fakestoreapi.com/products')
       .then(response => {
         setProducts(response.data);
       })
@@ -26,13 +19,19 @@ const ProductSection = () => {
       });
   };
 
-  const handleSortChange = (e) => {
-    setSortOption(e.target.value);
-  };
+  const filteredProducts = products.filter(product => {
+    // Filter by category
+    const categoryMatch = filters.categories.length === 0 || filters.categories.includes(product.category);
+
+    // Filter by price range
+    const priceMatch = product.price >= filters.priceRange[0] && product.price <= filters.priceRange[1];
+
+    return categoryMatch && priceMatch;
+  });
 
   // Helper function to display stars based on rating
   const renderStars = (rating) => {
-    const totalStars = 5; // Assuming the max rating is 5
+    const totalStars = 5;
     const filledStars = Math.round(rating);
     const stars = [];
 
@@ -40,7 +39,7 @@ const ProductSection = () => {
       stars.push(
         <i
           key={i}
-          className={`pi tracking-widest ${i < filledStars ? 'pi-star-fill text-yellow-500' : 'pi-star text-gray-400'}`}
+          className={`pi ${i < filledStars ? 'pi-star-fill text-yellow-500' : 'pi-star text-gray-400'}`}
         ></i>
       );
     }
@@ -50,18 +49,8 @@ const ProductSection = () => {
 
   return (
     <div className="w-full lg:w-3/4 p-4">
-      {/* Sort and View Options */}
       <div className="flex justify-between mb-4">
-        <div className="border p-2 bg-transparent">
-          <select
-            value={sortOption}
-            onChange={handleSortChange}
-            className="border-none cursor-pointer outline-none bg-transparent"
-          >
-            <option value="default">Default sorting</option>
-            <option value="descending">Descending Order</option>
-          </select>
-        </div>
+        {/* View Option Buttons */}
         <div>
           <button
             onClick={() => setView('grid')}
@@ -83,7 +72,7 @@ const ProductSection = () => {
         ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4' 
         : 'flex flex-col gap-4'
       }>
-        {products.map((product) => (
+        {filteredProducts.map((product) => (
           <div 
             key={product.id} 
             className="border p-4 rounded-lg shadow hover:shadow-lg transition-shadow"
@@ -96,8 +85,7 @@ const ProductSection = () => {
                   className="w-full h-48 object-cover mb-4"
                 />
                 <h3 className="font-bold text-sm mt-2">{product.title}</h3>
-                <p className="text-red-500 font-semibold mt-2">${product.price} <span className="line-through ml-4 text-grayDark">$55.45</span></p>
-                {/* Display Rating */}
+                <p className="text-red-500 font-semibold mt-2">${product.price}</p>
                 <div className="flex gap-2 mt-2">
                   {renderStars(product.rating.rate)}
                   <span className="ml-2">({product.rating.count})</span>
@@ -112,8 +100,7 @@ const ProductSection = () => {
                 />
                 <div>
                   <h3 className="font-bold">{product.title}</h3>
-                  <p className="text-red-500">${product.price} <span className="line-through ml-4 text-grayDark">$55.45</span></p>
-                  {/* Display Rating */}
+                  <p className="text-red-500">${product.price}</p>
                   <div className="flex items-center">
                     {renderStars(product.rating.rate)}
                     <span className="ml-2">({product.rating.count})</span>
