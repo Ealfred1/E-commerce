@@ -10,15 +10,6 @@ const ProductSection = ({ filters }) => {
     fetchProducts();
   }, [sortOption]);
 
-   const filteredProducts = products.filter(product => {
-    // Filter by category
-    const categoryMatch = filters.categories.length === 0 || filters.categories.includes(product.category);
-
-    // Filter by price range
-    const priceMatch = product.price >= filters.priceRange[0] && product.price <= filters.priceRange[1];
-
-    return categoryMatch && priceMatch;
-  });
 
   const fetchProducts = () => {
     let endpoint = 'https://fakestoreapi.com/products';
@@ -35,6 +26,17 @@ const ProductSection = ({ filters }) => {
         console.error('Error fetching products:', error);
       });
   };
+
+    const filteredProducts = products.filter(product => {
+    // Filter by category
+    const categoryMatch = filters.categories.length === 0 || filters.categories.includes(product.category);
+
+    // Filter by price range
+    const priceMatch = product.price >= filters.priceRange[0] && product.price <= filters.priceRange[1];
+
+    return categoryMatch && priceMatch;
+  });
+
 
   const handleSortChange = (e) => {
     setSortOption(e.target.value);
@@ -93,7 +95,7 @@ const ProductSection = ({ filters }) => {
         ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4' 
         : 'flex flex-col gap-4'
       }>
-        {products.map((product) => (
+        {filteredProducts.map((product) => (
           <div 
             key={product.id} 
             className="border p-4 rounded-lg shadow hover:shadow-lg transition-shadow"
