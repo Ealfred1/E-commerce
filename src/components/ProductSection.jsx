@@ -4,22 +4,13 @@ import axios from 'axios';
 const ProductSection = ({ filters }) => {
   const [products, setProducts] = useState([]);
   const [view, setView] = useState('grid');
+  const [sortOption, setSortOption] = useState('default');
 
   useEffect(() => {
     fetchProducts();
-  }, []);
+  }, [sortOption]);
 
-  const fetchProducts = () => {
-    axios.get('https://fakestoreapi.com/products')
-      .then(response => {
-        setProducts(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching products:', error);
-      });
-  };
-
-  const filteredProducts = products.filter(product => {
+   const filteredProducts = products.filter(product => {
     // Filter by category
     const categoryMatch = filters.categories.length === 0 || filters.categories.includes(product.category);
 
@@ -29,9 +20,29 @@ const ProductSection = ({ filters }) => {
     return categoryMatch && priceMatch;
   });
 
+  const fetchProducts = () => {
+    let endpoint = 'https://fakestoreapi.com/products';
+
+    if (sortOption === 'descending') {
+      endpoint = 'https://fakestoreapi.com/products?sort=desc'; // Sorting by price
+    }
+
+    axios.get(endpoint)
+      .then(response => {
+        setProducts(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching products:', error);
+      });
+  };
+
+  const handleSortChange = (e) => {
+    setSortOption(e.target.value);
+  };
+
   // Helper function to display stars based on rating
   const renderStars = (rating) => {
-    const totalStars = 5;
+    const totalStars = 5; // Assuming the max rating is 5
     const filledStars = Math.round(rating);
     const stars = [];
 
@@ -39,7 +50,7 @@ const ProductSection = ({ filters }) => {
       stars.push(
         <i
           key={i}
-          className={`pi ${i < filledStars ? 'pi-star-fill text-yellow-500' : 'pi-star text-gray-400'}`}
+          className={`pi tracking-widest ${i < filledStars ? 'pi-star-fill text-yellow-500' : 'pi-star text-gray-400'}`}
         ></i>
       );
     }
@@ -49,8 +60,18 @@ const ProductSection = ({ filters }) => {
 
   return (
     <div className="w-full lg:w-3/4 p-4">
+      {/* Sort and View Options */}
       <div className="flex justify-between mb-4">
-        {/* View Option Buttons */}
+        <div className="border p-2 bg-transparent">
+          <select
+            value={sortOption}
+            onChange={handleSortChange}
+            className="border-none cursor-pointer outline-none bg-transparent"
+          >
+            <option value="default">Default sorting</option>
+            <option value="descending">Descending Order</option>
+          </select>
+        </div>
         <div>
           <button
             onClick={() => setView('grid')}
@@ -72,7 +93,7 @@ const ProductSection = ({ filters }) => {
         ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4' 
         : 'flex flex-col gap-4'
       }>
-        {filteredProducts.map((product) => (
+        {products.map((product) => (
           <div 
             key={product.id} 
             className="border p-4 rounded-lg shadow hover:shadow-lg transition-shadow"
@@ -85,7 +106,8 @@ const ProductSection = ({ filters }) => {
                   className="w-full h-48 object-cover mb-4"
                 />
                 <h3 className="font-bold text-sm mt-2">{product.title}</h3>
-                <p className="text-red-500 font-semibold mt-2">${product.price}</p>
+                <p className="text-red-500 font-semibold mt-2">${product.price} <span className="line-through ml-4 text-grayDark">$55.45</span></p>
+                {/* Display Rating */}
                 <div className="flex gap-2 mt-2">
                   {renderStars(product.rating.rate)}
                   <span className="ml-2">({product.rating.count})</span>
@@ -100,7 +122,8 @@ const ProductSection = ({ filters }) => {
                 />
                 <div>
                   <h3 className="font-bold">{product.title}</h3>
-                  <p className="text-red-500">${product.price}</p>
+                  <p className="text-red-500">${product.price} <span className="line-through ml-4 text-grayDark">$55.45</span></p>
+                  {/* Display Rating */}
                   <div className="flex items-center">
                     {renderStars(product.rating.rate)}
                     <span className="ml-2">({product.rating.count})</span>

@@ -3,6 +3,10 @@ import React, { useState, useEffect } from 'react';
 const FilterSection = ({ products, filters, setFilters }) => {
   const [priceRange, setPriceRange] = useState([0, filters.maxPrice]);
 
+  // Calculate the maximum price from the fetched products
+  const maxPrice = Math.max(...products.map(product => product.price));
+
+  // Unique categories from the products
   const categories = [...new Set(products.map(product => product.category))];
 
   const handleCategoryChange = (e) => {
@@ -34,7 +38,11 @@ const FilterSection = ({ products, filters, setFilters }) => {
               onChange={handleCategoryChange}
               className="mr-2"
             />
-            {category.replace("men's clothing", "Men").replace("women's clothing", "Women")}
+            {category
+              .replace("men's clothing", "Men")
+              .replace("women's clothing", "Women")
+              .replace(/\b([a-z])/g, char => char.toUpperCase()) // Properly capitalize first letters
+            }
           </label>
         ))}
       </div>
@@ -45,7 +53,7 @@ const FilterSection = ({ products, filters, setFilters }) => {
         <input
           type="range"
           min="0"
-          max={filters.maxPrice}
+          max={maxPrice}  // Dynamically set the max price
           value={priceRange[1]}
           onChange={handlePriceChange}
           className="w-full"
