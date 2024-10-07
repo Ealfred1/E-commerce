@@ -5,6 +5,7 @@ import MobileNav from './MobileNav'
 import Loader from './Loader'
 import Searchbar from './Searchbar'
 import FilterSection from './FilterSection'
+import ProductSection from './ProductSection'
 
 export {
 	Layout,
@@ -13,5 +14,6 @@ export {
 	Loader,
 	MobileNav,
 	Searchbar,
-	FilterSection
+	FilterSection,
+	ProductSection
 }

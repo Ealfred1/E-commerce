@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FilterSection } from './components
+import { FilterSection, ProductSection } from '../components'
 
 const Homepage = () => {
   const [maxPrice, setMaxPrice] = useState(500);
