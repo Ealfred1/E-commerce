@@ -13,7 +13,7 @@ const ProductSection = () => {
   const fetchProducts = () => {
     let endpoint = 'https://fakestoreapi.com/products';
 
-    if (sortOption === 'price') {
+    if (sortOption === 'descending') {
       endpoint = 'https://fakestoreapi.com/products?sort=desc'; // Sorting by price
     }
 
@@ -41,7 +41,7 @@ const ProductSection = () => {
             className="border-none cursor-pointer outline-none bg-transparent"
             >
             <option value="default">Default sorting</option>
-            <option value="price">Sort by price</option>
+            <option value="descending">Descending Order</option>
           </select>
         </div>
         <div>
