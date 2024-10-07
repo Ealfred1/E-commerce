@@ -30,6 +30,24 @@ const ProductSection = () => {
     setSortOption(e.target.value);
   };
 
+  // Helper function to display stars based on rating
+  const renderStars = (rating) => {
+    const totalStars = 5; // Assuming the max rating is 5
+    const filledStars = Math.round(rating);
+    const stars = [];
+
+    for (let i = 0; i < totalStars; i++) {
+      stars.push(
+        <i
+          key={i}
+          className={`pi ${i < filledStars ? 'pi-star-fill text-yellow-500' : 'pi-star text-gray-400'}`}
+        ></i>
+      );
+    }
+
+    return stars;
+  };
+
   return (
     <div className="w-full lg:w-3/4 p-4">
       {/* Sort and View Options */}
@@ -39,7 +57,7 @@ const ProductSection = () => {
             value={sortOption}
             onChange={handleSortChange}
             className="border-none cursor-pointer outline-none bg-transparent"
-            >
+          >
             <option value="default">Default sorting</option>
             <option value="descending">Descending Order</option>
           </select>
@@ -79,6 +97,11 @@ const ProductSection = () => {
                 />
                 <h3 className="font-bold mt-2">{product.title}</h3>
                 <p className="text-red-500">${product.price}</p>
+                {/* Display Rating */}
+                <div className="flex justify-center items-center mt-2">
+                  {renderStars(product.rating.rate)}
+                  <span className="ml-2">({product.rating.count})</span>
+                </div>
               </div>
             ) : (
               <div className="flex items-center">
@@ -90,6 +113,11 @@ const ProductSection = () => {
                 <div>
                   <h3 className="font-bold">{product.title}</h3>
                   <p className="text-red-500">${product.price}</p>
+                  {/* Display Rating */}
+                  <div className="flex items-center">
+                    {renderStars(product.rating.rate)}
+                    <span className="ml-2">({product.rating.count})</span>
+                  </div>
                 </div>
               </div>
             )}
