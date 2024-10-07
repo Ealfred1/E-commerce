@@ -45,13 +45,13 @@ const ProductSection = () => {
         <div>
           <button
             onClick={() => setView('grid')}
-            className={`p-2 mr-2 border ${view === 'grid' ? 'bg-gray-200' : ''}`}
+            className={`p-2 mr-2 w-10 h-10 border ${view === 'grid' ? 'bg-primary text-white' : ''}`}
           >
             <i className="pi pi-th-large"></i>
           </button>
           <button
             onClick={() => setView('list')}
-            className={`p-2 border ${view === 'list' ? 'bg-gray-200' : ''}`}
+            className={`p-2 w-10 h-10 border ${view === 'list' ? 'bg-primary text-white' : ''}`}
           >
             <i className="pi pi-list"></i>
           </button>

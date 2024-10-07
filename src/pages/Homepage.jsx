@@ -9,7 +9,7 @@ const Homepage = () => {
   };
 
   return (
-    <div className="flex">
+    <div className="flex max-w-7xl mx-auto">
       <FilterSection maxPrice={maxPrice} handleFilterChange={handleFilterChange} />
       <ProductSection />
     </div>
