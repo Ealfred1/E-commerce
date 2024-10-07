@@ -40,7 +40,7 @@ const ProductSection = () => {
       stars.push(
         <i
           key={i}
-          className={`pi ${i < filledStars ? 'pi-star-fill text-yellow-500' : 'pi-star text-gray-400'}`}
+          className={`pi tracking-widest ${i < filledStars ? 'pi-star-fill text-yellow-500' : 'pi-star text-gray-400'}`}
         ></i>
       );
     }
@@ -89,16 +89,16 @@ const ProductSection = () => {
             className="border p-4 rounded-lg shadow hover:shadow-lg transition-shadow"
           >
             {view === 'grid' ? (
-              <div className="text-center">
+              <div className="text-left">
                 <img 
                   src={product.image} 
                   alt={product.title} 
                   className="w-full h-48 object-cover mb-4"
                 />
-                <h3 className="font-bold mt-2">{product.title}</h3>
-                <p className="text-red-500">${product.price}</p>
+                <h3 className="font-bold text-sm mt-2">{product.title}</h3>
+                <p className="text-red-500 font-semibold mt-2">${product.price} <span className="line-through ml-4 text-grayDark">$55.45</span></p>
                 {/* Display Rating */}
-                <div className="flex justify-center items-center mt-2">
+                <div className="flex gap-2 mt-2">
                   {renderStars(product.rating.rate)}
                   <span className="ml-2">({product.rating.count})</span>
                 </div>
@@ -112,7 +112,7 @@ const ProductSection = () => {
                 />
                 <div>
                   <h3 className="font-bold">{product.title}</h3>
-                  <p className="text-red-500">${product.price}</p>
+                  <p className="text-red-500">${product.price} <span className="line-through">$55.45</span></p>
                   {/* Display Rating */}
                   <div className="flex items-center">
                     {renderStars(product.rating.rate)}
