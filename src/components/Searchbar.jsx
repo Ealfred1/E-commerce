@@ -12,6 +12,12 @@ const Searchbar = () => {
     });
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
   const handleCategorySelect = (category) => {
     setFilters({
       ...filters,
@@ -38,6 +44,7 @@ const Searchbar = () => {
             placeholder="Search products..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
+            onKeyDown={handleKeyDown}  // Trigger search on "Enter" key press
           />
           <button
             className="bg-black text-secondary rounded-r-lg outline-none w-[20%] text-sm"
@@ -48,24 +55,27 @@ const Searchbar = () => {
         </div>
 
         <div className="text-white text-2xl flex gap-5">
-				<button className="hover:scale-[1.2] transition-all duration-200 flex items-center flex-col relative"><p><i className="pi pi-heart"></i></p>
-					<p className="text-[11px] -mt-3">
-						Wish List
-					</p>
-					<span className="top-dot">6</span>
-				</button>
-				<button className="hover:scale-[1.2] transition-all duration-200 flex items-center flex-col relative"><p><i className="pi pi-cart-plus"></i></p> 
-					<p className="text-[11px] -mt-3">
-						 Cart
-					</p>
-					<span className="top-dot translate-x-2">8</span>
-				</button>
-				<button className="hover:scale-[1.2] transition-all duration-200 flex items-center flex-col"><p><i className="pi pi-user"></i></p>
-					<p className="text-[11px] -mt-3">
-						 Account
-					</p>
-				</button>
-			</div>
+          <button className="hover:scale-[1.2] transition-all duration-200 flex items-center flex-col relative">
+            <p><i className="pi pi-heart"></i></p>
+            <p className="text-[11px] -mt-3">
+              Wish List
+            </p>
+            <span className="top-dot">6</span>
+          </button>
+          <button className="hover:scale-[1.2] transition-all duration-200 flex items-center flex-col relative">
+            <p><i className="pi pi-cart-plus"></i></p> 
+            <p className="text-[11px] -mt-3">
+              Cart
+            </p>
+            <span className="top-dot translate-x-2">8</span>
+          </button>
+          <button className="hover:scale-[1.2] transition-all duration-200 flex items-center flex-col">
+            <p><i className="pi pi-user"></i></p>
+            <p className="text-[11px] -mt-3">
+              Account
+            </p>
+          </button>
+        </div>
       </div>
     </nav>
   );
