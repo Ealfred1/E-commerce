@@ -79,7 +79,7 @@ const FilterSection = ({ products, filters, setFilters, isMobileVisible, onClose
       </div>
 
       {/* Brands */}
-      <div className="mt-4">
+      <div className="mt-4 hidden lg:block">
         <h3 className="font-bold mb-2 uppercase text-lg text-grayDark">Brands</h3>
         {brands.map((brand) => (
           <label key={brand} className="block mb-1 text-black">
