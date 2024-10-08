@@ -55,7 +55,7 @@ const Searchbar = () => {
           </div>
 
           {/* Icons */}
-          <div className="text-white text-2xl flex gap-1 lg:gap-5">
+          <div className="text-white text-2xl flex gap-5">
             <button className="hover:scale-[1.2] transition-all duration-200 flex items-center flex-col relative">
               <p><i className="pi pi-heart text-xs lg:text-lg"></i></p>
               <p className="text-[10px] lg:text-[11px] -mt-3">Wish List</p>
