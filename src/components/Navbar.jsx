@@ -34,11 +34,11 @@ const Navbar = () => {
 				</div>
 			</nav>
 			<Searchbar />
-			<div className="w-full flex items-start px-[4rem] py-2">
+			<div className="w-full flex items-center justify-center lg:justify-start lg:items-start px-[4rem] py-2">
 				<div className="flex gap-3 items-center">
 					<i className="pi pi-home text-primary"></i>
 					<i className="pi pi-chevron-right text-xs"></i>
-					<span className="text-sm">Shop</span>
+					<span className="text-sm translate-y-[1px]">Shop</span>
 				</div>
 			</div>
 		</>
