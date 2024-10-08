@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FilterSection, ProductSection } from '../components/'
+import { FilterSection, ProductSection } from '../components/';
 import axios from 'axios';
 
 const Homepage = () => {
@@ -9,6 +9,7 @@ const Homepage = () => {
     priceRange: [0, 0],
     maxPrice: 0,
   });
+  const [isFilterOpen, setIsFilterOpen] = useState(false); // State to control filter visibility
 
   useEffect(() => {
     axios.get('https://fakestoreapi.com/products')
@@ -26,9 +27,19 @@ const Homepage = () => {
   }, []);
 
   return (
-    <div className="flex max-w-7xl mx-auto">
-      <FilterSection products={products} filters={filters} setFilters={setFilters} />
-      <ProductSection filters={filters} />
+    <div className="relative flex max-w-7xl mx-auto">
+      {/* Filter section for desktop, and hidden by default on mobile */}
+      <FilterSection 
+        products={products} 
+        filters={filters} 
+        setFilters={setFilters} 
+        isMobileVisible={isFilterOpen} // Pass mobile visibility state
+        onClose={() => setIsFilterOpen(false)} // Close filter on outside click
+      />
+      <ProductSection 
+        filters={filters} 
+        onToggleFilter={() => setIsFilterOpen(true)} // Pass toggle function to ProductSection
+      />
     </div>
   );
 };
