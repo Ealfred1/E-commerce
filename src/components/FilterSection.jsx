@@ -55,15 +55,15 @@ const FilterSection = ({ products, filters, setFilters }) => {
     <div className="w-1/4 p-4 bg-gray-100">
       {/* Categories */}
       <div>
-        <h3 className="font-bold mb-2">Categories</h3>
+        <h3 className="font-bold mb-2 uppercase text-lg text-grayDark">Categories</h3>
         {categories.map((category) => (
-          <label key={category.name} className="block mb-1">
+          <label key={category.name} className="block mb-1 text-grayDark">
             <input
               type="checkbox"
               value={category.name}
               checked={filters.categories.includes(category.name)}
               onChange={handleCategoryChange}
-              className="mr-2"
+              className="mr-2 accent-primary"
             />
             {category.name
               .replace("men's clothing", "Men")
