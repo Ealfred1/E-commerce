@@ -54,10 +54,10 @@ const FilterSection = ({ products, filters, setFilters }) => {
   return (
     <div className="w-1/4 p-4 bg-gray-100">
       {/* Categories */}
-      <div>
+      <div className="w-full relative">
         <h3 className="font-bold mb-2 uppercase text-lg text-grayDark">Categories</h3>
         {categories.map((category) => (
-          <label key={category.name} className="block mb-1 text-grayDark">
+          <label key={category.name} className="block mb-1 text-black flex items-center">
             <input
               type="checkbox"
               value={category.name}
@@ -69,8 +69,8 @@ const FilterSection = ({ products, filters, setFilters }) => {
               .replace("men's clothing", "Men")
               .replace("women's clothing", "Women")
               .replace(/\b([a-z])/g, char => char.toUpperCase()) // Properly capitalize first letters
-            } ({category.count})
-          </label>
+            } <p className="absolute right-3"> ({category.count})</p>
+          </label> 
         ))}
       </div>
 
