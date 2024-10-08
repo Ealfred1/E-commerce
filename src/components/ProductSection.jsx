@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useFilter } from '../context/FilterContext';
 
-const ProductSection = ({ filters }) => {
+const ProductSection = ({ filters, onToggleFilter }) => {
   const { filters: contextFilters } = useFilter();
   const [products, setProducts] = useState([]);
   const [view, setView] = useState('grid');
@@ -80,6 +80,9 @@ const ProductSection = ({ filters }) => {
           </select>
         </div>
         <div>
+           <button onClick={onToggleFilter} className="lg:hidden mr-4 p-2 border bg-primary text-white">
+            <i className="pi pi-filter"></i> {/* Filter Icon */}
+          </button>
           <button
             onClick={() => setView('grid')}
             className={`p-2 mr-2 w-10 h-10 border ${view === 'grid' ? 'bg-primary text-white' : ''}`}

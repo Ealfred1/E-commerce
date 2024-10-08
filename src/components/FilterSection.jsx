@@ -56,7 +56,7 @@ const FilterSection = ({ products, filters, setFilters, isMobileVisible, onClose
     {/* Overlay for mobile */}
       {isMobileVisible && <div className="fixed inset-0 bg-black opacity-50 z-20" onClick={onClose}></div>}
 
-    <div className={`w-1/4 p-4 bg-white shadow-lg z-30 transform ${isMobileVisible ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 fixed lg:static lg:translate-x-0 h-full`}>
+    <div className={`w-[70%] h-screen pb-96 lg:w-1/4 p-4 bg-white shadow-lg z-30 transform ${isMobileVisible ? 'translate-x-0' : '-translate-x-[200%]'} transition-transform duration-300 fixed lg:static lg:translate-x-0 h-full`}>
       {/* Categories */}
       <div className="w-full relative">
         <h3 className="font-bold mb-2 uppercase text-lg text-grayDark">Categories</h3>
