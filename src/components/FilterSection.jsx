@@ -52,7 +52,7 @@ const FilterSection = ({ products, filters, setFilters }) => {
   };
 
   return (
-    <div className="w-1/4 p-4 bg-gray-100">
+    <div className="w-1/4 p-4 bg-white shadow shadow-xl shadow-grayLight">
       {/* Categories */}
       <div className="w-full relative">
         <h3 className="font-bold mb-2 uppercase text-lg text-grayDark">Categories</h3>
