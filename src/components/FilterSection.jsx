@@ -6,8 +6,17 @@ const FilterSection = ({ products, filters, setFilters }) => {
   // Calculate the maximum price from the fetched products
   const maxPrice = Math.max(...products.map(product => product.price));
 
-  // Unique categories from the products
-  const categories = [...new Set(products.map(product => product.category))];
+  // Unique categories from the products with item count
+  const categories = [...new Set(products.map(product => product.category))].map(category => ({
+    name: category,
+    count: products.filter(product => product.category === category).length,
+  }));
+
+  // Hardcoded brands
+  const brands = ['Adidas', 'Nike', 'Easy', 'Arong'];
+
+  // Hardcoded sizes
+  const sizes = ['XS', 'S', 'M', 'L', 'XL'];
 
   const handleCategoryChange = (e) => {
     const category = e.target.value;
@@ -16,6 +25,24 @@ const FilterSection = ({ products, filters, setFilters }) => {
       : [...filters.categories, category];
 
     setFilters({ ...filters, categories: updatedCategories });
+  };
+
+  const handleBrandChange = (e) => {
+    const brand = e.target.value;
+    const updatedBrands = filters.brands.includes(brand)
+      ? filters.brands.filter(b => b !== brand)
+      : [...filters.brands, brand];
+
+    setFilters({ ...filters, brands: updatedBrands });
+  };
+
+  const handleSizeChange = (e) => {
+    const size = e.target.value;
+    const updatedSizes = filters.sizes.includes(size)
+      ? filters.sizes.filter(s => s !== size)
+      : [...filters.sizes, size];
+
+    setFilters({ ...filters, sizes: updatedSizes });
   };
 
   const handlePriceChange = (e) => {
@@ -30,19 +57,51 @@ const FilterSection = ({ products, filters, setFilters }) => {
       <div>
         <h3 className="font-bold mb-2">Categories</h3>
         {categories.map((category) => (
-          <label key={category} className="block mb-1">
+          <label key={category.name} className="block mb-1">
             <input
               type="checkbox"
-              value={category}
-              checked={filters.categories.includes(category)}
+              value={category.name}
+              checked={filters.categories.includes(category.name)}
               onChange={handleCategoryChange}
               className="mr-2"
             />
-            {category
+            {category.name
               .replace("men's clothing", "Men")
               .replace("women's clothing", "Women")
               .replace(/\b([a-z])/g, char => char.toUpperCase()) // Properly capitalize first letters
-            }
+            } ({category.count})
+          </label>
+        ))}
+      </div>
+
+      {/* Brands */}
+      <div className="mt-4">
+        <h3 className="font-bold mb-2">Brands</h3>
+        {brands.map((brand) => (
+          <label key={brand} className="block mb-1">
+            <input
+              type="checkbox"
+              value={brand}
+              onChange={handleBrandChange}
+              className="mr-2"
+            />
+            {brand}
+          </label>
+        ))}
+      </div>
+
+      {/* Sizes */}
+      <div className="mt-4">
+        <h3 className="font-bold mb-2">Sizes</h3>
+        {sizes.map((size) => (
+          <label key={size} className="block mb-1">
+            <input
+              type="checkbox"
+              value={size}
+              onChange={handleSizeChange}
+              className="mr-2"
+            />
+            {size.toUpperCase()}
           </label>
         ))}
       </div>
