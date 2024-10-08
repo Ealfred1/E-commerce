@@ -76,14 +76,14 @@ const FilterSection = ({ products, filters, setFilters }) => {
 
       {/* Brands */}
       <div className="mt-4">
-        <h3 className="font-bold mb-2">Brands</h3>
+        <h3 className="font-bold mb-2 uppercase text-lg text-grayDark">Brands</h3>
         {brands.map((brand) => (
-          <label key={brand} className="block mb-1">
+          <label key={brand} className="block mb-1 text-black">
             <input
               type="checkbox"
               value={brand}
               onChange={handleBrandChange}
-              className="mr-2"
+              className="mr-2 accent-primary"
             />
             {brand}
           </label>
@@ -92,14 +92,14 @@ const FilterSection = ({ products, filters, setFilters }) => {
 
       {/* Sizes */}
       <div className="mt-4">
-        <h3 className="font-bold mb-2">Sizes</h3>
+        <h3 className="font-bold mb-2 uppercase text-lg text-grayDark">Sizes</h3>
         {sizes.map((size) => (
-          <label key={size} className="block mb-1">
+          <label key={size} className="block mb-1 text-black">
             <input
               type="checkbox"
               value={size}
               onChange={handleSizeChange}
-              className="mr-2"
+              className="mr-2 accent-primary"
             />
             {size.toUpperCase()}
           </label>
@@ -108,14 +108,14 @@ const FilterSection = ({ products, filters, setFilters }) => {
 
       {/* Price */}
       <div className="mt-4">
-        <h3 className="font-bold mb-2">Price</h3>
+        <h3 className="font-bold mb-2 uppercase text-lg text-grayDark">Price</h3>
         <input
           type="range"
           min="0"
           max={maxPrice}  // Dynamically set the max price
           value={priceRange[1]}
           onChange={handlePriceChange}
-          className="w-full"
+          className="w-full accent-primary"
         />
         <p className="mt-1">${priceRange[0]} - ${priceRange[1]}</p>
       </div>
